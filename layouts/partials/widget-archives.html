@@ -1,8 +1,30 @@
+{{/*
+{{ define "box-content" }}
+
 <div class="card">
     <div class="card-content">
-        <h1 class="title is-5">Archives</h1>
-        {{ range (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
-            <a href="{{ "archives" | absURL }}/{{ .Key }}">{{ .Key }}</a> ({{ len .Pages }})<br>
-        {{ end }}
+			{{ block "box-content" . }} {{ end }}
     </div>
 </div>
+
+
+	<h1 class="title is-5">archives</h1>
+	<div>HIHIHIHIH</div>
+
+	<h1 class="title is-5">archives</h1>
+	{{ range (where .site.regularpages "section" "post").groupbydate "2006" }}
+		<a href="{{ "archives" | absURL }}/{{ .key }}">{{ .key }}</a> ({{ len .pages }})<br>
+	{{ end }}
+{{ end }}
+
+*/}}
+
+<div class="card">
+    <div class="card-content">
+		<h1 class="title is-5">archives</h1>
+		{{ range (where .site.regularpages "section" "post").groupbydate "2006" }}
+			<a href="{{ "archives" | absURL }}/{{ .key }}">{{ .key }}</a> ({{ len .pages }})<br>
+		{{ end }}
+    </div>
+</div>
+
