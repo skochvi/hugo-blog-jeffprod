@@ -6,15 +6,15 @@
         <div class="tile is-child box">
             <div class="content">
                 <!--<h3>Welcome to my blog !</h3>-->
-                <hr>
                 {{ range $paginator.Pages }}
                     <article class="media">
                         <div class="media-content">
                             <div class="content">
                                 <p class="title is-4"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></p>
                                 <p class="subtitle is-size-6 has-text-grey-light">
-                                    Published at {{ .Date.Format "January 2, 2006" }} &middot;
+                                    {{ .Date.Format "January 2, 2006" }} &middot;
                                     <i class="far fa-clock"></i>&nbsp;{{.ReadingTime}} min read
+								<hr>
                                 </p>
                                 <p>{{ .Summary }}...</p>
                             </div>
@@ -30,6 +30,8 @@
         {{ partial "widget-archives.html" . }}
     </div>
 </div>
+
+<!--Paginator-->
 <div class="columns">
     <div class="column is-9">
         <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
