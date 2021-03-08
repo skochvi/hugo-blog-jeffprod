@@ -5,6 +5,14 @@
   font-family: "Slabo 13px", serif;
 }
 
+.column-row-top {
+  padding-bottom: 0.75rem;
+}
+
+.column-row-bottom {
+  padding-top: 0.75rem;
+}
+
 .hero-body {
   background-position: center;
   background-size: cover;
