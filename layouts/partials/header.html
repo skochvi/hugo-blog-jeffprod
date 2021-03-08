@@ -8,7 +8,6 @@
 
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" href="{{ "css/styles.css" | absURL }}" />
-    <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}" />
 	
     {{ with .OutputFormats.Get "rss" -}}
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
@@ -36,7 +35,7 @@
                     {{ else if eq .Type "archives" }}
                         Archive {{ .Title }}
                     {{ else }}
-						{{ .Title }}
+						{{ .Site.Title }}
                     {{ end }}
                 </h1>
                 {{ if eq .Type "article" }}

@@ -1,0 +1,28 @@
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
+<!--List of Posts-->
+<div class="block">
+	<div class="tile is-child box">
+	   {{ range $paginator.Pages }}
+		<div class="content"> <!-- just keeps spacing nice -->
+			{{ partial "post-header.html" . }}
+			<div class="post-content">
+				<p>{{ .Summary }}...</p>
+			</div>
+		</div>
+	   {{ end }}
+	</div>
+</div>
+<!--Paginator-->
+<div class="block">
+	<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+		{{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
+		{{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+		<ul class="pagination-list">
+			{{ range $paginator.Pagers }}
+			<li class="pagination__item">
+				<a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+			</li>
+			{{ end }}
+		</ul>
+	</nav>
+</div>
