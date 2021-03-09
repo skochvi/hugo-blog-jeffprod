@@ -1,12 +1,17 @@
 {{ define "main" }}
 
+{{ $url_basename_year := path.Base .Permalink }}
+{{ $group_by_year := (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
+{{ $select_year_group := index (where $group_by_year ".Key" $url_basename_year) 0 }}
+{{ $select_year_group_rev := $select_year_group.ByPublishDate.Reverse }}
+
+<div>{{ $select_year_group }}</div>
+{{ $paginator := .Paginate $select_year_group_rev }}
+
 {{/*
-<!--{{ $posts-by-year := (.Site.RegularPages where "Section" "post").GroupByDate "2000" }}-->
-<!--{{ $year-selected := ($posts where "Key" path.Base).ByPublishDate.Reverse }}-->
-<!--{{ $paginator := $year-selected }}-->
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
 */}}
 
-{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
 <!--List of Posts-->
 <div class="block">
 	<div class="tile is-child box">
