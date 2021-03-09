@@ -4,7 +4,9 @@
 	<div class="tile is-child box">
 	   {{ range $paginator.Pages }}
 		<div class="content"> <!-- just keeps spacing nice -->
+			<!--Header-->
 			{{ partial "post-header.html" . }}
+			<!--Content-->
 			<div class="post-content">
 				<p>{{ .Summary }}...</p>
 			</div>

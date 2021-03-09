@@ -1,16 +1,17 @@
 {{ define "main" }}
 <div class="tile is-child box">
-	<!--Header-->
-	{{ partial "post-header.html" . }}
-	<!--Content-->
-	<div class="post-content">
-		<div class="is-size-6">
-			{{ .Content }}
+	<div class="content"> <!-- just keeps spacing nice -->
+		<!--Header-->
+		{{ partial "post-header.html" . }}
+		<!--Content-->
+		<div class="post-content">
+			<p>{{ .Content }}...</p>
 		</div>
 	</div>
 </div>
 {{ end }}
+
 {{ define "widgets" }}
-	{{ partial "widget-related.html" . }}<br>
-	{{ partial "widget-trio.html" . }}<br>
+	{{ partial "widget-related.html" . }}
+	{{ partial "widget-trio.html" . }}
 {{ end }}

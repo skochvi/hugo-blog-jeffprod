@@ -1,34 +1,46 @@
 {{ define "main" }}
-{{ $archive := lower .Title }}
 
-<div class="columns">
-    <div class="column is-9">
-        <div class="tile is-child box">
-            <div class="content">
-{{ range $key, $value := .Site.Taxonomies.archives }}{{ if eq $key $archive }}{{ range $value.Pages }}
-                <article class="media">
-                    <div class="media-content">
-                        <div class="post-content">
-                            <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
-                            <p class="subtitle is-size-6 has-text-grey-light">
-                                Published at {{ .Date.Format "January 2, 2006" }} &middot;
-                                <i class="far fa-clock"></i>&nbsp;{{.ReadingTime}} min read
-                            </p>
-                            <p>{{ .Summary }}...</p>
-                        </div>
-                    </div>
-                </article>
-                <br>
-{{ end }}{{ end }}{{ end }}
-            </div>
-        </div>
-    </div>
-    <div class="column is-3">
-        {{ partial "widget-tags.html" . }}<br>
-        {{ partial "widget-recent.html" . }}<br>
-        {{ partial "widget-archives.html" . }}
-    </div>
+{{/*
+<!--{{ $posts-by-year := (.Site.RegularPages where "Section" "post").GroupByDate "2000" }}-->
+<!--{{ $year-selected := ($posts where "Key" path.Base).ByPublishDate.Reverse }}-->
+<!--{{ $paginator := $year-selected }}-->
+*/}}
+
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
+<!--List of Posts-->
+<div class="block">
+	<div class="tile is-child box">
+	   {{ range $paginator.Pages }}
+		<div class="content"> <!-- just keeps spacing nice -->
+			{{ partial "post-header.html" . }}
+			<div class="post-content">
+				<p>{{ .Summary }}...</p>
+			</div>
+		</div>
+	   {{ end }}
+	</div>
+</div>
+<!--Paginator-->
+<div class="block">
+	<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
+		{{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
+		{{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+		<ul class="pagination-list">
+			{{ range $paginator.Pagers }}
+			<li class="pagination__item">
+				<a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+			</li>
+			{{ end }}
+		</ul>
+	</nav>
 </div>
 
 
 {{ end }}
+
+{{ define "widgets" }}
+	{{ partial "widget-trio.html" . }}
+{{ end }}
+
+
+
