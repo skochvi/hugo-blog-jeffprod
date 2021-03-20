@@ -1,8 +1,7 @@
-{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
 <!--List of Posts-->
 <div class="block">
 	<div class="tile is-child box">
-	   {{ range $paginator.Pages }}
+	   {{ range .Paginator.Pages }}
 		<div class="content"> <!-- just keeps spacing nice -->
 			<!--Header-->
 			{{ partial "post-header.html" . }}
@@ -17,12 +16,12 @@
 <!--Paginator-->
 <div class="block">
 	<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-		{{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
-		{{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+		{{ if .Paginator.HasPrev }}<a class="pagination-previous" href="{{ .Paginator.Prev.URL }}">Previous</a>{{ end }}
+		{{ if .Paginator.HasNext }}<a class="pagination-next" href="{{ .Paginator.Next.URL }}">Next</a>{{ end }}
 		<ul class="pagination-list">
-			{{ range $paginator.Pagers }}
+			{{ range .Paginator.Pagers }}
 			<li class="pagination__item">
-				<a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+				<a class="pagination-link{{ if eq . .Paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
 			</li>
 			{{ end }}
 		</ul>

@@ -1,5 +1,6 @@
 {{ define "main" }}
-	{{ partial "post-list.html" . }}
+	{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
+	{{ partial "post-list.html" (dict "context" . "Paginator" $paginator) }}
 {{ end }}
 
 {{ define "widgets" }}
