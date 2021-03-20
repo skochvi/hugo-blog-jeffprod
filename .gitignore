@@ -1,2 +1,5 @@
 /bulma
 *.sw*
+/exampleSite
+README.md
+theme.toml
