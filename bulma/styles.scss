@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+//************Colors************
+
+// Palette
+$purple: #8A4D76;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+//$pop: #d63d3d !default;
+$pop: #538d54 !default; // dark green
+// Blues - Dark to light
+$p1: #1b262c;
+$p2: #0f4c75;
+$p3: #3282b8;
+$p4: #bbe1fa;
+$white: #FFFFFF;
+
+// Component colors
+$body-background-color: $beige-lighter;
+
+$link: $pop;
+$link-hover: $purple;
+
+$navbar-item-color: $p4;
+$navbar-background-color: $p2;
+
+$title-color: $p3;
+
+// For custom color map
+
+// Hero title hack (can't color Hero title directly)
+$htitle: $p4 !default;
+$htitle-invert: $htitle !default;
+
+$foot: $p1;
+$foot-invert: findColorInvert($foot) !default;
+$foot-invert: $foot !default;
+
+$custom-colors: ("foot": ($foot, $foot-invert),
+				 "htitle": ($htitle, $htitle-invert)) !default;
+
+//************Fonts************
+
+// Google Fonts
+//@import url('https://fonts.googleapis.com/css?family=Courier+Prime:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap');
+
+
+// Font families
+$body-family: "Courier Prime" !default;
+
+//$post-font-family: "Roboto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu", "Fira Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+//font-family: 'Rhodium Libre', serif;
+
+// Post content class
+.post-content {
+	//@extend .content;
+	font-family: 'Slabo 13px', serif;
+}
+
+// Widget header link
+.widget-header-link {
+	@extend .has-text-weight-bold;
+}
+
+//************Layout & Spacing************
+
+// Vertical columns
+// same padding as "column" class
+.column-row-top{
+	padding-bottom: 0.75rem;
+}
+
+.column-row-bottom{
+	padding-top: 0.75rem;
+}
+
+.hero-body {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	}
+
+.mysocial { color: hsl(0, 0%, 100%);}
+.mysocial:hover { color: hsl(0, 0%, 71%) }
+
+$gap: 32px !default;
+//$container-offset: (2 * $gap) !default;
+
+//$desktop: 960px + (2 * $gap) !default;
+$desktop: 1160px + (2 * $gap) !default;
+
+//.container.is-fluid {
+
+	//+desktop
+		//max-width: $desktop - $container-offset
+		//max-width: 960px;
+		//max-width: 1060px;
+//}
+
+//************Misc************
+
+// Override Bulma's global variables
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Override some of Bulma's component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+//************Imports************
+
+//@import "bulma/bulma.sass";
+// Everything in bulma.sass (to be pruned at some point)
+@import "bulma/sass/utilities/_all";
+@import "bulma/sass/base/_all";
+@import "bulma/sass/elements/_all";
+@import "bulma/sass/form/_all";
+@import "bulma/sass/components/_all";
+@import "bulma/sass/grid/_all";
+@import "bulma/sass/helpers/_all";
+@import "bulma/sass/layout/_all";
+
+
