@@ -1,1 +1,9 @@
-<p>default list</p>
+{{ define "main" }}
+	{{ $paginator := .Paginate .Pages.ByPublishDate.Reverse }}
+	{{ partial "post-list.html" (dict "context" . "Paginator" $paginator) }}
+{{ end }}
+
+{{ define "widgets" }}
+	{{ partial "widgets/widget-trio.html" . }}
+{{ end }}
+
