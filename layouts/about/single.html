@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="tile is-child box">
+	<div class="content"> <!-- just keeps spacing nice -->
+		<!--Header-->
+		{{ partial "about-header.html" . }}
+		<!--Content-->
+		<div class="post-content">
+			<p>{{ .Content }}</p>
+		</div>
+	</div>
+</div>
+{{ end }}
+
+{{ define "widgets" }}
+	{{ partial "widgets/widget-related.html" . }}
+	{{ partial "widgets/widget-trio.html" . }}
+{{ end }}
