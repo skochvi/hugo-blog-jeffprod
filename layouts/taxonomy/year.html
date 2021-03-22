@@ -4,8 +4,8 @@
 {{ $group_by_year := (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
 {{ $select_year_group := index (where $group_by_year ".Key" $url_basename_year) 0 }}
 {{ $select_year_group_rev := $select_year_group.ByPublishDate.Reverse }}
-
 {{ $paginator := .Paginate $select_year_group_rev }}
+
 {{ partial "post-list.html" (dict "context" . "Paginator" $paginator) }}
 {{ end }}
 
