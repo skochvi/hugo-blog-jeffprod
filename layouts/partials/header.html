@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-	<link rel="stylesheet" href="{{ "css/styles.css" | absURL }}" />
+	<link rel="stylesheet" href="{{ "/css/styles.css" | absURL }}" />
 	
     {{ with .OutputFormats.Get "rss" -}}
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
@@ -18,8 +18,8 @@
     <!-- nav -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-			<a class="navbar-item has-text-weight-bold is-size-5" href="{{ .Site.BaseURL | absURL }}">Home</a>
-			<a class="navbar-item has-text-weight-bold is-size-5" href="{{ "about" | absURL }}">About</a>
+			<a class="navbar-item has-text-weight-bold is-size-5" href="{{ .Site.BaseURL | relURL }}">Home</a>
+			<a class="navbar-item has-text-weight-bold is-size-5" href="{{ "about" | relURL }}">About</a>
         </div>
     </nav>
     <!-- /nav -->
